@@ -1,0 +1,177 @@
+
+        /* Basic CSS for styling */
+        /* Add this to your existing CSS or in a separate CSS file */
+        body {
+            background-color: #ffffff; /* Set your desired background color here */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+.card1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center contents both horizontally and vertically */
+    align-items: center; /* Center contents both horizontally and vertically */
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgb(4, 2, 2);
+    opacity: 1;
+    background-image: url('img/ps.png');
+    color: #000000;  
+    font-size: 20px;
+    height: 250px;
+    width: 450px;
+}
+
+
+.card2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents horizontally */
+    text-align: center; /* Center text content horizontally */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgb(226, 13, 13);
+    opacity: 1;
+    color: #000000;
+    background-image: url('img/b.png');
+    height: 250px;
+    font-size: 18px;
+    width: 450px;
+}
+.card3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents horizontally */
+    text-align: center; /* Center text content horizontally */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgb(226, 13, 13);
+    opacity: 1;
+    color: #ffffff;
+    background-image: url('img/c.jpg');
+    height: 250px;
+    font-size: 20px;
+    width: 450px;
+}
+.card4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents horizontally */
+    text-align: center; /* Center text content horizontally */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgb(226, 13, 13);
+    opacity: 1;
+    color: #080000;
+    background-image: url('img/g.png');
+    height: 250px;
+    width: 450px;
+    font-size: 20px;
+   
+    
+}
+.card5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents horizontally */
+    text-align: center; /* Center text content horizontally */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgb(226, 13, 13);
+    opacity: 1;
+    color: #eaff00;
+    background-image: url('');
+    height: 250px;
+    font-size: 20px;
+    width: 450px;
+}
+.card6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents horizontally */
+    text-align: center; /* Center text content horizontally */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:20px;
+    box-shadow: 0 2px 4px rgb(226, 13, 13);
+    opacity: 1;
+    color: #eaff00;
+    background-image: url('');
+    height: 250px;
+    width: 450px;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 100px; /* Add margin to space out the button from other content */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            font-size: 24px;
+        }
+
+        body {
+            background-image: url(); /* Background image URL */
+            background-size: cover; /* Adjust the size to cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent the background from repeating */
+            background-attachment: fixed; /* Fixed background scrolling with content */
+            /* You can also set background color or other properties here */
+        }
+        
+
+        /* Footer */
+
+      

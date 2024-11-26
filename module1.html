@@ -1,0 +1,111 @@
+<html>
+    <title>
+        Password Generator
+    </title>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="passwordGenerator.js"></script>
+        <h1>
+           
+        </h1>
+    </head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="container mt-5">
+        <h1 class="mb-4">Password Generator </h1>
+        <form>
+            <div class="form-group">
+                <label for="passwordLength">Password Length:</label>
+                <input type="number" class="form-control" id="passwordLength" min="4" max="50" value="12">
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="includeNumbers">
+                <label class="form-check-label" for="includeNumbers">Include Numbers</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="includeSymbols">
+                <label class="form-check-label" for="includeSymbols">Include Symbols</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="includeUppercase">
+                <label class="form-check-label" for="includeUppercase">Include Uppercase</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" id="includeLowercase">
+                <label class="form-check-label" for="includeLowercase">Include Lowercase</label>
+            </div>
+            <button type="button" class="btn btn-primary mt-3" id="generatePassword">Generate Password</button>
+        </form>
+        <div class="mt-4">
+            <input type="text" class="form-control" id="passwordOutput" readonly>
+            <button type="button" class="btn btn-success mt-2" id="copyPassword">Copy to Clipboard</button>
+        </div>
+        <div id="passwordStrength" class="mt-3"></div>
+    </div>
+    <script>
+        function generatePassword() {
+            const length = document.getElementById("passwordLength").value;
+            const includeNumbers = document.getElementById("includeNumbers").checked;
+            const includeSymbols = document.getElementById("includeSymbols").checked;
+            const includeUppercase = document.getElementById("includeUppercase").checked;
+            const includeLowercase = document.getElementById("includeLowercase").checked;
+
+            const numbers = "0123456789";
+            const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+            const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const lowercase = "abcdefghijklmnopqrstuvwxyz";
+
+            let charset = "";
+
+            if (includeNumbers) charset += numbers;
+            if (includeSymbols) charset += symbols;
+            if (includeUppercase) charset += uppercase;
+            if (includeLowercase) charset += lowercase;
+
+            if (charset.length === 0) {
+                alert("Please select at least one character type.");
+                return;
+            }
+
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+
+            document.getElementById("passwordOutput").value = password;
+        }
+
+        document.getElementById("generatePassword").addEventListener("click", generatePassword);
+
+        document.getElementById("copyPassword").addEventListener("click", function() {
+            const passwordOutput = document.getElementById("passwordOutput");
+            passwordOutput.select();
+            document.execCommand("copy");
+            alert("Password copied to clipboard: " + passwordOutput.value);
+
+            // ... (previous code for generating the password)
+
+    const passwordStrength = zxcvbn(password);
+
+// Display the password strength score
+const passwordStrengthElement = document.getElementById("passwordStrength");
+passwordStrengthElement.innerHTML = "Password Strength: " + passwordStrength.score + "/4";
+passwordStrengthElement.style.color = ["#ff0000", "#ff6600", "#ffa500", "#007bff", "#4CAF50"][passwordStrength.score];
+        });
+        
+    </script>
+    
+</body>
+</html>

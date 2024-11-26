@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Checker</title>
+    <!-- Include Bootstrap CSS (you can link to a CDN or host it locally) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .weak {
+            color: red;
+        }
+
+        .moderate {
+            color: orange;
+        }
+
+        .strong {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <body>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Password Strength Checker</h1>
+            <div class="form-group">
+                <label for="checkPassword">Enter a Password:</label>
+                <input type="text" class="form-control" id="checkPassword" placeholder="Password">
+            </div>
+            <button class="btn btn-primary" id="checkStrength">Check Password Strength</button>
+            <div id="passwordStrength" class="mt-3"></div>
+        </div>
+    
+        <script>
+            function checkPasswordStrength() {
+                const password = document.getElementById("checkPassword").value;
+                const strengthIndicator = document.getElementById("passwordStrength");
+    
+                // Define password strength rules and messages
+                const rules = [
+                    { pattern: /[A-Z]/, message: "Uppercase letter(s)" },
+                    { pattern: /[a-z]/, message: "Lowercase letter(s)" },
+                    { pattern: /[0-9]/, message: "Number(s)" },
+                    { pattern: /[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, message: "Symbol(s)" },
+                    { pattern: /.{8,}/, message: "At least 8 characters" }
+                ];
+    
+                let strength = 0;
+                let message = "";
+    
+                for (const rule of rules) {
+                    if (rule.pattern.test(password)) {
+                        strength++;
+                    }
+                }
+    
+                if (strength === 0) {
+                message = "Weak";
+                strengthIndicator.classList.remove("moderate", "strong");
+                strengthIndicator.classList.add("weak");
+            } else if (strength >= 3) {
+                message = "Strong";
+                strengthIndicator.classList.remove("weak", "moderate");
+                strengthIndicator.classList.add("strong");
+            } else {
+                message = "Moderate";
+                strengthIndicator.classList.remove("weak", "strong");
+                strengthIndicator.classList.add("moderate");
+            }
+    
+                strengthIndicator.textContent = `Password Strength: ${message}`;
+            }
+    
+            document.getElementById("checkStrength").addEventListener("click", checkPasswordStrength);
+        </script>
+    
+        <!-- Include Bootstrap JS (you can link to a CDN or host it locally) -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        nav {
+    background-color: #333; /* Background color for the navigation bar */
+    padding: 10px 0; /* Add some vertical padding */
+    text-align: center; /* Center-align the links */
+}
+
+nav a {
+    color: #fff; /* Text color for the links */
+    text-decoration: none; /* Remove underlines from links */
+    margin: 0 10px; /* Add horizontal spacing between links */
+    font-size: 16px; /* Set the font size */
+}
+
+nav a:hover {
+    color: #007bff; /* Change the text color on hover */
+}
+
+    </style>
+</body>
+</html>

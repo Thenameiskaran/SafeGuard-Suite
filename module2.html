@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.3.0/crypto-js.js"></script>
+
+    <title>Text Encryption and Decryption</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <h1>Text Encryption and Decryption</h1>
+    <div>
+        <label for="encryptionKey">Encryption Key:</label>
+        <input type="text" id="encryptionKey">
+    </div>
+    <div>
+        <label for="textToEncrypt">Text to Encrypt:</label>
+        <textarea id="textToEncrypt"></textarea>
+    </div>
+    <button id="encryptButton">Encrypt</button>
+    <div>
+        <label for="encryptedText">Encrypted Text:</label>
+        <textarea id="encryptedText"></textarea>
+        <button id="copyButton">Copy</button>
+    </div>
+    
+    <button id="decryptButton">Decrypt</button>
+    <div>
+        <label for="decryptedText">Decrypted Text:</label>
+        <textarea id="decryptedText" readonly></textarea>
+    </div>
+
+    <script>
+        document.getElementById("encryptButton").addEventListener("click", function() {
+            const encryptionKey = document.getElementById("encryptionKey").value;
+            const textToEncrypt = document.getElementById("textToEncrypt").value;
+
+            const encryptedText = CryptoJS.AES.encrypt(textToEncrypt, encryptionKey).toString();
+            document.getElementById("encryptedText").value = encryptedText;
+        });
+        
+        document.getElementById("copyButton").addEventListener("click", function() {
+            const encryptedText = document.getElementById("encryptedText").value;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(encryptedText).then(function() {
+                 
+                }).catch(function(error) {
+                    console.error("Copy failed: ", error);
+                });
+            }
+        });
+        document.getElementById("decryptButton").addEventListener("click", function() {
+            const encryptionKey = document.getElementById("encryptionKey").value;
+            const encryptedText = document.getElementById("encryptedText").value;
+
+            const decryptedText = CryptoJS.AES.decrypt(encryptedText, encryptionKey).toString(CryptoJS.enc.Utf8);
+            document.getElementById("decryptedText").value = decryptedText;
+        });
+    </script>
+    <style>
+        /* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a background color for the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the container */
+div {
+    margin-bottom: 20px;
+}
+
+/* Style labels and text inputs */
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+/* Style buttons */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the "Decrypted Text" textarea to make it read-only */
+#decryptedText {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+}
+
+/* Center the heading */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+    </style>
+</body>
+</html>
